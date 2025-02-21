@@ -1,0 +1,26 @@
+<h1 style="text-align:center; color:#333;">Task List</h1>
+
+<table border="1" style="width:100%; border-collapse:collapse;">
+  <tr style="background-color:#f4f4f4;">
+    <th style="padding:10px;">Title</th>
+    <th style="padding:10px;">Description</th>
+    <th style="padding:10px;">Completed</th>
+    <th style="padding:10px;">Actions</th>
+  </tr>
+  
+  <% @tasks.each do |task| %>
+    <tr>
+      <td style="padding:10px;"><%= task.title %></td>
+      <td style="padding:10px;"><%= task.description %></td>
+      <td style="padding:10px;"><%= task.completed ? "✔️" : "❌" %></td>
+      <td style="padding:10px;">
+        <%= link_to 'Show', task, style: "color:blue; text-decoration:none;" %> |
+        <%= link_to 'Edit', edit_task_path(task), style: "color:green; text-decoration:none;" %> |
+
+        <%= button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, form: { style: "display:inline;" }, style: "color:white; background:red; border:none; padding:5px; cursor:pointer; text-decoration:none;" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Task', new_task_path, style: "display:block; text-align:center; margin-top:20px; color:white; background:black; padding:10px; text-decoration:none;" %>

@@ -1,0 +1,24 @@
+<h1 style="color:#333;"><%= @task.new_record? ? 'New Task' : 'Edit Task' %></h1>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <p>
+    <%= form.label :title, style: "font-weight:bold;" %><br>
+    <%= form.text_field :title, style: "width:100%; padding:5px;" %>
+  </p>
+
+  <p>
+    <%= form.label :description, style: "font-weight:bold;" %><br>
+    <%= form.text_area :description, style: "width:100%; padding:5px;" %>
+  </p>
+
+  <p>
+    <%= form.label :completed, style: "font-weight:bold;" %>
+    <%= form.check_box :completed %>
+  </p>
+
+  <p>
+    <%= form.submit 'Save', style: "background:black; color:white; padding:10px; border:none; cursor:pointer;" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', tasks_path, style: "color:blue; text-decoration:none;" %>
